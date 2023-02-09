@@ -30,4 +30,6 @@ variable "region" {
 variable "eks_version" {
   default = "1.24"
 }
-
+variable "argocd-namespace" {
+  default = "argocd"
+}
