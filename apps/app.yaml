@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mediawiki
+  namespace: argocd
+spec:
+  destination:
+    namespace: mediawiki
+    server: https://kubernetes.default.svc
+  project: mediawiki
+  source:
+    path: yamls/
+    repoURL: https://github.com/challenge-2023/mediawiki-k8s-manifests
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}

@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  creationTimestamp: null
+  name: mediawiki
+  namespace: argocd
+spec:
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  description: Project for mediawiki components
+  destinations:
+  - name: in-cluster # needs change
+    namespace: mediawiki
+    server: https://kubernetes.default.svc
+ # needs change
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  roles:
+  - description: Role for deploying mediawiki
+    groups:
+    - Platform-Engineering-Services:argocd-pes-admins
+    name: mediawiki-role
+    policies:
+    - p, proj:mediawiki:mediawiki, applications, *, mediawiki/*,
+      allow
+  sourceRepos:
+  - https://github.com/challenge-2023/mediawiki-k8s-manifests
