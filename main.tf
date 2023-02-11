@@ -29,7 +29,7 @@ resource "kubernetes_namespace" "argocd" {
 #  cluster_identity_oidc_issuer_arn = data.aws_eks_cluster.this.role_arn
 #}
 resource "helm_release" "argo-cd" {
-  depends_on = [helm_release.aws-elb,kubernetes_namespace.argocd]
+  depends_on = [kubernetes_namespace.argocd]
   chart = "argo-cd"
   name  = "argo-cd"
   repository = "https://argoproj.github.io/argo-helm"
