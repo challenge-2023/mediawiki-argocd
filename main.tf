@@ -3,24 +3,24 @@ resource "kubernetes_namespace" "argocd" {
     name = var.argocd-namespace
   }
 }
-resource "helm_release" "aws-elb" {
-  chart = "aws-load-balancer-controller"
-  name  = "aws-load-balancer-controller"
-  repository = "https://aws.github.io/eks-charts"
-  namespace = "kube-system"
-    values = [
-    "${file("alb-values.yaml")}"
-  ]
-  set {
-    name = "clusterName"
-    value = join("-", [var.cust_id, "eks"])
-  }
-  set {
-    name = "region"
-    value = var.region
-  }
-
-}
+#resource "helm_release" "aws-elb" {
+#  chart = "aws-load-balancer-controller"
+#  name  = "aws-load-balancer-controller"
+#  repository = "https://aws.github.io/eks-charts"
+#  namespace = "kube-system"
+#    values = [
+#    "${file("alb-values.yaml")}"
+#  ]
+#  set {
+#    name = "clusterName"
+#    value = join("-", [var.cust_id, "eks"])
+#  }
+#  set {
+#    name = "region"
+#    value = var.region
+#  }
+#
+#}
 
 #module "eks-argocd" {
 #  source  = "lablabs/eks-argocd/aws"
