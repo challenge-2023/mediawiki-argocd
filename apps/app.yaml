@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: mediawiki
   source:
-    path: yamls/
+    path: challenge1/
     repoURL: https://github.com/challenge-2023/mediawiki-k8s-manifests
     targetRevision: HEAD
   syncPolicy:
